@@ -1,0 +1,68 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>DLL Tracker API</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+                .container { max-width: 800px; margin: 0 auto; }
+                .panel { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+                h1, h2 { color: #333; }
+                .endpoint { background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 5px; }
+                .method { display: inline-block; padding: 3px 8px; border-radius: 3px; font-weight: bold; margin-right: 10px; }
+                .get { background: #61affe; color: white; }
+                .post { background: #49cc90; color: white; }
+                a.button { display: inline-block; padding: 8px 15px; background: #4CAF50; color: white; text-decoration: none; border-radius: 4px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>DLL Tracker API</h1>
+                <p>Welcome to the DLL Tracker API. Use the endpoints below to access team and match data.</p>
+                
+                <div class="panel">
+                    <h2>Available Endpoints</h2>
+                    
+                    <div class="endpoint">
+                        <span class="method get">GET</span>
+                        <strong>/team-info</strong>
+                        <p>Get comprehensive team statistics, match history, and form.</p>
+                        <p><em>Query parameter:</em> team_id (required)</p>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <span class="method post">POST</span>
+                        <strong>/create-match</strong>
+                        <p>Create a new match with team and player information.</p>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <span class="method get">GET</span>
+                        <strong>/match-result</strong>
+                        <p>Get match results using the match code.</p>
+                        <p><em>Query parameter:</em> match_code (required)</p>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <span class="method get">GET</span>
+                        <strong>/match-stats</strong>
+                        <p>Get detailed match statistics using the match code.</p>
+                        <p><em>Query parameter:</em> match_code (required)</p>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <span class="method get">GET</span>
+                        <strong>/status</strong>
+                        <p>Check the API status.</p>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <h2>Need to test the API?</h2>
+                    <p>Use our interactive test page to try out the API endpoints.</p>
+                    <a href="/test" class="button">Go to Test Page</a>
+                </div>
+            </div>
+        </body>
+        </html>
+        

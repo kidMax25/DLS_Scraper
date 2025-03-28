@@ -1,5 +1,6 @@
 import re
 import time
+import logging
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -10,21 +11,44 @@ from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 import json
 
+# Configure logging to file instead of console
+logging.basicConfig(
+    filename='tracker.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
 class TrackerScraper:
-    def __init__(self, user_id):
+    def __init__(self, user_id, headless=False, logging_level='minimal'):
+        """
+        Initialize the TrackerScraper
+        
+        :param user_id: 8-character DLL Tracker ID
+        :param headless: Whether to run browser in headless mode (invisible)
+        :param logging_level: 'minimal', 'standard', or 'verbose'
+        """
         # Validate and format user ID
         self.user_id = user_id.lower()
         if not re.match(r'^[a-z0-9]{8}$', self.user_id):
             raise ValueError("Invalid ID: Must be 8 characters (letters and numbers)")
+            
+        # Set logging level and headless mode
+        self.logging_level = logging_level
+        self.headless = headless
 
+        # Configure Chrome options with headless mode
         chrome_options = Options()
-        # chrome_options.add_argument("--headless")  # Uncomment for headless mode
+        if headless:
+            chrome_options.add_argument("--headless=new")  # Updated headless flag for newer Chrome versions
+            chrome_options.add_argument("--window-size=1920,1080")  # Add window size for better rendering
+            chrome_options.add_argument("--disable-gpu")  # Sometimes needed with headless
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
         chrome_options.add_experimental_option('useAutomationExtension', False)
 
+        # Initialize the WebDriver
         self.driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()),
             options=chrome_options
@@ -33,31 +57,49 @@ class TrackerScraper:
         # Construct user URL
         self.user_url = f"https://tracker.ftgames.com/?id={self.user_id}"
         
-        # Initialize team information
-        self.player_team_name = None  # The player's team name
-        self.opponent_team_names = [] # List of opponent team names
-        self.match_cards = []         # Store all match cards in one place
+        # Initialize data containers
+        self.player_team_name = None
+        self.opponent_team_names = []
+        self.match_cards = []
         self.team_stats = {}
-        self.matches = []             # List of match details with team names
+        self.matches = []
         self.team_form = []
-        self.match_stats = {}         # Store match statistics
-        self.goals = []               # Store goals
+        self.match_stats = {}
+        self.goals = []
+        
+    def log(self, message, level='info'):
+        """Log messages based on the configured verbosity"""
+        if self.logging_level == 'minimal' and level != 'error':
+            return
+        
+        if self.logging_level == 'standard' and level == 'debug':
+            return
+            
+        if level == 'error':
+            logging.error(message)
+        elif level == 'warning':
+            logging.warning(message)
+        elif level == 'info':
+            logging.info(message)
+        elif level == 'debug':
+            logging.debug(message)
         
     def validate_tracker_id(self):
         """Check if the tracker ID is valid"""
         try:
             self.driver.get(self.user_url)
             
-            # Wait for the page to load fully
-            time.sleep(5)  # Add a static wait
+            # Wait for the page to load fully - longer wait if headless
+            wait_time = 5 if not self.headless else 10
+            time.sleep(wait_time)
             
             # Look for elements that indicate page load
             try:
-                WebDriverWait(self.driver, 10).until(
+                WebDriverWait(self.driver, 15).until(  # Increased timeout
                     EC.presence_of_element_located((By.CSS_SELECTOR, "body"))
                 )
             except:
-                print("Page did not load properly")
+                self.log("Page did not load properly", 'error')
                 return False
 
             # Check for invalid ID message
@@ -67,7 +109,7 @@ class TrackerScraper:
                     "//*[contains(text(), 'Could not find player')]"
                 )
                 if invalid_divs:
-                    print("Invalid Tracker ID. Please check and try again.")
+                    self.log("Invalid Tracker ID", 'error')
                     return False
             except:
                 pass
@@ -75,7 +117,7 @@ class TrackerScraper:
             return True
 
         except Exception as e:
-            print(f"Error validating ID: {e}")
+            self.log(f"Error validating ID: {str(e)}", 'error')
             return False
     
     def extract_match_cards(self):
@@ -92,15 +134,15 @@ class TrackerScraper:
                 try:
                     self.match_cards = self.driver.find_elements(By.CSS_SELECTOR, selector)
                     if self.match_cards:
-                        print(f"Found {len(self.match_cards)} match cards")
+                        self.log(f"Found {len(self.match_cards)} match cards", 'debug')
                         return True
                 except:
                     continue
             
-            print("Could not find any match cards")
+            self.log("Could not find any match cards", 'warning')
             return False
         except Exception as e:
-            print(f"Could not extract match cards: {e}")
+            self.log(f"Error extracting match cards: {str(e)}", 'error')
             return False
             
     def extract_team_names(self):
@@ -119,18 +161,18 @@ class TrackerScraper:
                         EC.presence_of_element_located((By.CSS_SELECTOR, selector))
                     )
                     self.player_team_name = team_name_element.text
-                    print(f"Player's Team Name: {self.player_team_name}")
+                    self.log(f"Team name: {self.player_team_name}", 'debug')
                     break
                 except:
                     continue
             
             if not self.player_team_name:
-                print("Could not find player's team name")
+                self.log("Could not find player's team name", 'warning')
                 return False
                 
             # Now extract opponent team names from match cards
             if self.match_cards:
-                for i, card in enumerate(self.match_cards[:10]):  # Limit to 10 most recent matches
+                for i, card in enumerate(self.match_cards[:10]):
                     try:
                         opponent_elements = card.find_elements(
                             By.CSS_SELECTOR, 
@@ -140,13 +182,13 @@ class TrackerScraper:
                             opponent_name = opponent_elements[1].text
                             self.opponent_team_names.append(opponent_name)
                     except Exception as e:
-                        print(f"Could not extract opponent name for match {i+1}: {e}")
+                        self.log(f"Error extracting opponent for match {i+1}: {str(e)}", 'debug')
                 
-                print(f"Extracted {len(self.opponent_team_names)} opponent team names")
+                self.log(f"Extracted {len(self.opponent_team_names)} opponent names", 'debug')
                 return True
             return False
         except Exception as e:
-            print(f"Could not extract team names: {e}")
+            self.log(f"Error extracting team names: {str(e)}", 'error')
             return False
 
     def extract_team_overview(self):
@@ -169,21 +211,21 @@ class TrackerScraper:
                             'games_lost': int(stats_elements[2].text),
                             'win_percentage': float(stats_elements[3].text.rstrip('%'))
                         }
-                        print(f"Team Overview: {self.team_stats}")
+                        self.log(f"Team stats extracted", 'debug')
                         return True
                 except:
                     continue
             
-            print("Could not find team overview statistics")
+            self.log("Could not find team overview statistics", 'warning')
             return False
         except Exception as e:
-            print(f"Could not extract team overview: {e}")
+            self.log(f"Error extracting team overview: {str(e)}", 'error')
             return False
             
     def extract_matches(self, limit=10):
         """Extract details of matches with team names"""
         if not self.match_cards:
-            print("No match cards available")
+            self.log("No match cards available", 'warning')
             return False
             
         try:
@@ -203,7 +245,7 @@ class TrackerScraper:
                     elif score_1 == score_2:
                         result = "Draw"
                     else:
-                        result = "Loss"  # Fixed typo from "Loose" to "Loss"
+                        result = "Loss"
 
                     # Get opponent name
                     opponent_name = self.opponent_team_names[i] if i < len(self.opponent_team_names) else "Unknown"
@@ -232,15 +274,14 @@ class TrackerScraper:
                     # Store the most recent match separately for backwards compatibility
                     if i == 0:
                         self.recent_match = match_data
-                        print(f"Recent Match: {self.player_team_name} {score_1}-{score_2} {opponent_name} ({result})")
-                    
+                        
                 except Exception as e:
-                    print(f"Could not extract details for match {i+1}: {e}")
+                    self.log(f"Error extracting match {i+1}: {str(e)}", 'debug')
             
-            print(f"Extracted data for {len(self.matches)} matches")
+            self.log(f"Extracted data for {len(self.matches)} matches", 'debug')
             return True
         except Exception as e:
-            print(f"Could not extract match details: {e}")
+            self.log(f"Error extracting match details: {str(e)}", 'error')
             return False
             
     def extract_match_statistics(self, match_index=0):
@@ -251,7 +292,7 @@ class TrackerScraper:
         :return: Dictionary with match stats
         """
         if not self.match_cards or match_index >= len(self.match_cards):
-            print(f"No match card available for index {match_index}")
+            self.log(f"No match card available for index {match_index}", 'warning')
             return {}
         
         try:
@@ -274,14 +315,14 @@ class TrackerScraper:
             }}
             """
             self.driver.execute_script(script)
-            print(f"Toggled stats panel for match {match_index}")
+            self.log(f"Toggled stats panel for match {match_index}", 'debug')
             
             # Wait for the stats panel to appear
             try:
                 stats_panel_xpath = '//div[contains(@class, "flex-1 w-full p-2 animate-in slide-in-from-left-10 fade-in-50")]'
                 WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, stats_panel_xpath)))
             except TimeoutException:
-                print("Stats panel did not appear after clicking, trying alternative approach...")
+                self.log("Stats panel did not appear, trying alternative approach", 'debug')
                 # Alternative click approach
                 self.driver.execute_script(f"""
                     let matches = document.querySelectorAll('.bg-card.relative.m-2.rounded-md');
@@ -296,27 +337,27 @@ class TrackerScraper:
                         }}, 700);
                     }}
                 """)
-                time.sleep(1.5)  # Wait longer for this operation
+                time.sleep(1.5)
                 
                 # Try waiting again
                 try:
                     WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, stats_panel_xpath)))
                 except TimeoutException:
-                    print("Still couldn't get stats panel to appear")
+                    self.log("Could not get stats panel to appear", 'warning')
                     return {}
 
             # Locate the stats container
             try:
                 stats_container = self.driver.find_element(By.XPATH, '//div[contains(@class, "flex flex-col")]')
             except:
-                print("No stats container found")
+                self.log("No stats container found", 'warning')
                 return {}
 
             # Get all stat rows
             stat_rows = stats_container.find_elements(By.XPATH, './/div[contains(@class, "relative my-1")]')
 
             if not stat_rows:
-                print("No statistics rows found in container")
+                self.log("No statistics rows found in container", 'warning')
                 return {}
 
             match_statistics = {
@@ -333,26 +374,35 @@ class TrackerScraper:
                     stat_name = values[1].text.strip().lower().replace(" ", "_")  # Normalize stat name
                     away_value = values[2].text.strip()
 
+                    # Try to convert numeric values to ints
+                    try:
+                        if home_value.isdigit():
+                            home_value = int(home_value)
+                        if away_value.isdigit():
+                            away_value = int(away_value)
+                    except:
+                        pass
+
                     match_statistics['stats'][stat_name] = {
                         'home': home_value,
                         'away': away_value
                     }
 
             if not match_statistics['stats']:
-                print("Statistics extracted but empty. Check structure.")
+                self.log("Statistics extracted but empty. Check structure.", 'warning')
                 return {}
 
-            print(f"Extracted {len(match_statistics['stats'])} statistics for {match_info['home_team']} vs {match_info['away_team']}")
+            self.log(f"Extracted {len(match_statistics['stats'])} statistics", 'debug')
             return match_statistics
 
         except Exception as e:
-            print(f"Error extracting match statistics: {e}")
+            self.log(f"Error extracting match statistics: {str(e)}", 'error')
             return {}
             
     def extract_goals(self, match_index=0):
         """Extract goal scorers and their details for a specific match"""
         if not self.match_cards or match_index >= len(self.match_cards):
-            print(f"No match card available for index {match_index}")
+            self.log(f"No match card available for index {match_index}", 'warning')
             return []
             
         try:
@@ -408,23 +458,23 @@ class TrackerScraper:
                                     'assist': assist
                                 })
                         except Exception as e:
-                            print(f"Could not extract individual goal details: {e}")
+                            self.log(f"Error extracting goal details: {str(e)}", 'debug')
                     
                     # If we found goals with this selector, break the loop
                     if goals:
                         break
             
-            print(f"Extracted {len(goals)} goals for match index {match_index}")
+            self.log(f"Extracted {len(goals)} goals", 'debug')
             return goals
 
         except Exception as e:
-            print(f"Could not extract goals: {e}")
+            self.log(f"Error extracting goals: {str(e)}", 'error')
             return []
     
     def extract_team_form(self, limit=5):
         """Extract team form based on already processed match data"""
         if not self.matches:
-            print("No matches data available for form extraction")
+            self.log("No matches data available for form extraction", 'warning')
             return False
         
         try:
@@ -434,20 +484,19 @@ class TrackerScraper:
             # Get form from already processed matches
             for match in self.matches[:limit]:
                 if match['result'] == "Win":
-                    self.team_form.append("🟢")  # Win
+                    self.team_form.append("Win")  # Win
                 elif match['result'] == "Draw":
-                    self.team_form.append("🟠")  # Draw
+                    self.team_form.append("Draw")  # Draw
                 else:
-                    self.team_form.append("🔴")  # Loss
+                    self.team_form.append("Loss")  # Loss
             
-            form_string = ' '.join(self.team_form)
-            print(f"Team Form (Last {len(self.team_form)} matches): {form_string}")
+            self.log(f"Extracted form for {len(self.team_form)} matches", 'debug')
             return True
             
         except Exception as e:
-            print(f"Could not extract team form: {e}")
+            self.log(f"Error extracting team form: {str(e)}", 'error')
             return False
-            
+    
     def scrape(self):
         """Main method to scrape all data using optimized approach"""
         try:
@@ -472,100 +521,66 @@ class TrackerScraper:
                     # Extract goals from the most recent match
                     self.goals = self.extract_goals(0)
                     
-                    # Prepare a comprehensive summary
-                    self._print_summary()
+                    return self.to_json()
                 else:
-                    print("No match cards found. Scraping limited.")
+                    self.log("No match cards found. Scraping limited.", 'warning')
+                    return {'status': 'error', 'message': 'No match data found'}
             else:
-                print("Invalid tracker ID or page did not load properly.")
+                self.log("Invalid tracker ID or page did not load properly.", 'error')
+                return {'status': 'error', 'message': 'Invalid tracker ID or page did not load'}
         except Exception as e:
-            print(f"Scraping error: {e}")
+            self.log(f"Scraping error: {str(e)}", 'error')
+            return {'status': 'error', 'message': str(e)}
         finally:
             self.driver.quit()
-            
-    def _print_summary(self):
-        """Print a comprehensive summary of the extracted data"""
-        print("\n" + "="*50)
-        print(f"TEAM SUMMARY: {self.player_team_name}")
-        print("="*50)
-        
-        # Print team stats
-        if self.team_stats:
-            print("\nTEAM STATISTICS:")
-            print(f"Games Played: {self.team_stats.get('games_played', 'N/A')}")
-            print(f"Games Won: {self.team_stats.get('games_won', 'N/A')}")
-            print(f"Games Lost: {self.team_stats.get('games_lost', 'N/A')}")
-            print(f"Win Percentage: {self.team_stats.get('win_percentage', 'N/A')}%")
-        
-        # Print recent match
-        if self.recent_match:
-            print("\nLAST MATCH:")
-            rm = self.recent_match
-            print(f"{rm['home_team']} {rm['home_score']} - {rm['away_score']} {rm['away_team']}")
-            print(f"Result: {rm['result']}")
-            if rm.get('date'):
-                print(f"Date: {rm['date']}")
-            
-            # Print match statistics if available
-            if self.match_stats and 'stats' in self.match_stats:
-                print("\nMATCH STATISTICS:")
-                for stat_name, values in self.match_stats['stats'].items():
-                    home_team = self.match_stats.get('home_team', rm['home_team'])
-                    away_team = self.match_stats.get('away_team', rm['away_team'])
-                    print(f"{stat_name.replace('_', ' ').title()}: {values['home']} ({home_team}) - {values['away']} ({away_team})")
-            
-            # Print goals if available
-            if self.goals:
-                print("\nGOALS:")
-                for i, goal in enumerate(self.goals):
-                    print(f"{i+1}. {goal['time']} - {goal['scorer']}")
-                    if 'assist' in goal and goal['assist'] != "No assist":
-                        print(f"   Assist: {goal['assist']}")
-        
-        # Print form
-        if self.team_form:
-            print("\nRECENT FORM:")
-            print(' '.join(self.team_form))
-        
-        print("="*50)
-        
-    def export_to_json(self, filename=None):
-        """Export all collected data to a JSON file"""
-        if not filename:
-            filename = f"{self.player_team_name.replace(' ', '_').lower()}_stats.json"
-            
-        export_data = {
-            "team_name": self.player_team_name,
-            "team_stats": self.team_stats,
-            "matches": self.matches,
-            "form": self.team_form,
-            "recent_match_stats": self.match_stats,
-            "recent_match_goals": self.goals
+    
+    def to_json(self):
+        """Convert scraped data to JSON-friendly dictionary"""
+        result = {
+            'status': 'success',
+            'team_name': self.player_team_name,
+            'team_stats': self.team_stats,
+            'matches': self.matches[:10],  # Last 10 matches
+            'form': self.team_form,
+            'recent_match': self.recent_match if hasattr(self, 'recent_match') else None
         }
         
-        try:
-            with open(filename, 'w') as f:
-                json.dump(export_data, f, indent=2)
-            print(f"Data exported successfully to {filename}")
-            return True
-        except Exception as e:
-            print(f"Error exporting data: {e}")
-            return False
-
-
-def main():
-    try:
-        user_id = input("Enter Your DLS ID: ").strip()
-        tracker = TrackerScraper(user_id)
-        tracker.scrape()
-        
-        # Optionally export data to JSON
-        export = input("Export data to JSON? (y/n): ").strip().lower()
-        if export == 'y':
-            tracker.export_to_json()
+        # Add match statistics if available
+        if self.match_stats and 'stats' in self.match_stats:
+            result['recent_match_stats'] = self.match_stats
             
-    except ValueError as ve:
-        print(ve)
+        # Add goals if available
+        if self.goals:
+            result['recent_match_goals'] = self.goals
+            
+        return result
+
+
+def get_team_data(team_id, headless=False, logging_level='minimal'):
+    """
+    Convenience function to get team data in a single call
+    
+    :param team_id: 8-character DLL Tracker ID
+    :param headless: Whether to run browser in headless mode
+    :param logging_level: 'minimal', 'standard', or 'verbose'
+    :return: JSON-friendly dictionary with team data
+    """
+    try:
+        scraper = TrackerScraper(team_id, headless=headless, logging_level=logging_level)
+        return scraper.scrape()
+    except Exception as e:
+        logging.error(f"Error in get_team_data: {str(e)}")
+        return {'status': 'error', 'message': str(e)}
+
 
 if __name__ == "__main__":
-    main()
+    # Example usage
+    import sys
+    
+    if len(sys.argv) > 1:
+        team_id = sys.argv[1]
+    else:
+        team_id = input("Enter DLS Tracker ID: ").strip()
+    
+    result = get_team_data(team_id, headless=False, logging_level='standard')
+    print(json.dumps(result, indent=2))

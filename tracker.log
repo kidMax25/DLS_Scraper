@@ -1,0 +1,78 @@
+2025-03-28 22:14:57,906 - WARNING -  * Debugger is active!
+2025-03-28 22:14:57,936 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 22:34:42,206 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\app.py', reloading
+2025-03-28 22:34:45,850 - WARNING -  * Debugger is active!
+2025-03-28 22:34:45,853 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 22:36:07,279 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 22:36:07,279 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 22:36:07,280 - INFO -  * Restarting with stat
+2025-03-28 22:36:08,206 - WARNING -  * Debugger is active!
+2025-03-28 22:36:08,210 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 22:42:55,856 - INFO - 127.0.0.1 - - [28/Mar/2025 22:42:55] "GET / HTTP/1.1" 200 -
+2025-03-28 22:42:56,901 - INFO - 127.0.0.1 - - [28/Mar/2025 22:42:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-28 22:43:10,104 - INFO - 127.0.0.1 - - [28/Mar/2025 22:43:10] "GET /test HTTP/1.1" 200 -
+2025-03-28 22:43:37,042 - INFO - ====== WebDriver manager ======
+2025-03-28 22:43:37,042 - INFO - 127.0.0.1 - - [28/Mar/2025 22:43:37] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:43:41,893 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 22:43:42,055 - INFO - 127.0.0.1 - - [28/Mar/2025 22:43:42] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:43:42,664 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 22:43:43,471 - INFO - Driver [C:\Users\snmax\.wdm\drivers\chromedriver\win64\134.0.6998.165\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-28 22:43:47,380 - INFO - 127.0.0.1 - - [28/Mar/2025 22:43:47] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:43:52,398 - INFO - 127.0.0.1 - - [28/Mar/2025 22:43:52] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:43:57,798 - INFO - 127.0.0.1 - - [28/Mar/2025 22:43:57] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:45:40,823 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\Tracker.py', reloading
+2025-03-28 22:45:44,954 - INFO -  * Restarting with stat
+2025-03-28 22:45:48,464 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 22:45:48,464 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 22:45:48,476 - INFO -  * Restarting with stat
+2025-03-28 22:45:49,543 - WARNING -  * Debugger is active!
+2025-03-28 22:45:49,546 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 22:46:13,846 - INFO - ====== WebDriver manager ======
+2025-03-28 22:46:13,846 - INFO - 127.0.0.1 - - [28/Mar/2025 22:46:13] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:46:15,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 22:46:16,054 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 22:46:16,822 - INFO - Driver [C:\Users\snmax\.wdm\drivers\chromedriver\win64\134.0.6998.165\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-28 22:46:19,498 - INFO - 127.0.0.1 - - [28/Mar/2025 22:46:19] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:46:25,811 - INFO - 127.0.0.1 - - [28/Mar/2025 22:46:25] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 22:46:31,486 - INFO - 127.0.0.1 - - [28/Mar/2025 22:46:31] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:30:22,593 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 23:30:22,606 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 23:30:22,609 - INFO -  * Restarting with stat
+2025-03-28 23:30:23,856 - WARNING -  * Debugger is active!
+2025-03-28 23:30:23,861 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 23:30:33,883 - INFO - 127.0.0.1 - - [28/Mar/2025 23:30:33] "GET /test HTTP/1.1" 200 -
+2025-03-28 23:30:52,153 - INFO - ====== WebDriver manager ======
+2025-03-28 23:30:52,154 - INFO - 127.0.0.1 - - [28/Mar/2025 23:30:52] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:30:54,271 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 23:30:55,225 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 23:30:56,106 - INFO - Driver [C:\Users\snmax\.wdm\drivers\chromedriver\win64\134.0.6998.165\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-28 23:30:57,176 - INFO - 127.0.0.1 - - [28/Mar/2025 23:30:57] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:31:02,505 - INFO - 127.0.0.1 - - [28/Mar/2025 23:31:02] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:31:07,525 - INFO - 127.0.0.1 - - [28/Mar/2025 23:31:07] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:31:12,842 - INFO - 127.0.0.1 - - [28/Mar/2025 23:31:12] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:31:17,862 - INFO - 127.0.0.1 - - [28/Mar/2025 23:31:17] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:32:20,102 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\Tracker.py', reloading
+2025-03-28 23:32:24,560 - INFO -  * Restarting with stat
+2025-03-28 23:32:26,042 - WARNING -  * Debugger is active!
+2025-03-28 23:32:26,045 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 23:32:27,063 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\Tracker.py', reloading
+2025-03-28 23:32:27,140 - INFO -  * Restarting with stat
+2025-03-28 23:32:28,136 - WARNING -  * Debugger is active!
+2025-03-28 23:32:28,144 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 23:32:29,166 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\Tracker.py', reloading
+2025-03-28 23:32:29,236 - INFO -  * Restarting with stat
+2025-03-28 23:32:30,351 - WARNING -  * Debugger is active!
+2025-03-28 23:32:30,355 - INFO -  * Debugger PIN: 142-912-041
+2025-03-28 23:34:48,672 - INFO - ====== WebDriver manager ======
+2025-03-28 23:34:48,673 - INFO - 127.0.0.1 - - [28/Mar/2025 23:34:48] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:34:49,672 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 23:34:51,406 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-28 23:34:52,103 - INFO - Driver [C:\Users\snmax\.wdm\drivers\chromedriver\win64\134.0.6998.165\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-28 23:34:53,691 - INFO - 127.0.0.1 - - [28/Mar/2025 23:34:53] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:35:00,720 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:00] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:35:05,748 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:05] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:35:11,073 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:11] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-28 23:35:16,096 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:16] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
