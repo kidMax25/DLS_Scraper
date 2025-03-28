@@ -1,0 +1,42 @@
+{
+    "title": "Recording 3/28/2025 at 2:13:58 PM",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 1678,
+            "height": 432,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "https://tracker.ftgames.com/?id=4c51fw0c",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "https://tracker.ftgames.com/?id=4c51fw0c",
+                    "title": "DLL Tracker"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.min-w-full > div:nth-of-type(2) svg"
+                ],
+                [
+                    "xpath//html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/div[2]/div[5]/div[1]/div/div/svg"
+                ],
+                [
+                    "pierce/div.min-w-full > div:nth-of-type(2) svg"
+                ]
+            ],
+            "offsetY": 11.0859375,
+            "offsetX": 10.390625
+        }
+    ]
+}
