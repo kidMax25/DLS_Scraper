@@ -1,0 +1,178 @@
+{
+  "team_name": "STARS FC",
+  "team_stats": {
+    "games_played": 1664,
+    "games_won": 733,
+    "games_lost": 671,
+    "win_percentage": 52.2
+  },
+  "matches": [
+    {
+      "index": 0,
+      "home_team": "STARS FC",
+      "away_team": "TYSON VANMERCY",
+      "home_score": 1,
+      "away_score": 4,
+      "result": "Loss",
+      "date": null
+    },
+    {
+      "index": 1,
+      "home_team": "STARS FC",
+      "away_team": "DINOTSHI",
+      "home_score": 3,
+      "away_score": 0,
+      "result": "Win",
+      "date": null
+    },
+    {
+      "index": 2,
+      "home_team": "STARS FC",
+      "away_team": "CHELSEA FC",
+      "home_score": 2,
+      "away_score": 1,
+      "result": "Win",
+      "date": null
+    },
+    {
+      "index": 3,
+      "home_team": "STARS FC",
+      "away_team": "FORCE UNITED",
+      "home_score": 3,
+      "away_score": 0,
+      "result": "Win",
+      "date": null
+    },
+    {
+      "index": 4,
+      "home_team": "STARS FC",
+      "away_team": "Dream FC",
+      "home_score": 0,
+      "away_score": 0,
+      "result": "Draw",
+      "date": null
+    },
+    {
+      "index": 5,
+      "home_team": "STARS FC",
+      "away_team": "CHELSEA",
+      "home_score": 4,
+      "away_score": 3,
+      "result": "Win",
+      "date": null
+    },
+    {
+      "index": 6,
+      "home_team": "STARS FC",
+      "away_team": "CHELSEA",
+      "home_score": 4,
+      "away_score": 1,
+      "result": "Win",
+      "date": null
+    },
+    {
+      "index": 7,
+      "home_team": "STARS FC",
+      "away_team": "PIRATES",
+      "home_score": 3,
+      "away_score": 3,
+      "result": "Draw",
+      "date": null
+    },
+    {
+      "index": 8,
+      "home_team": "STARS FC",
+      "away_team": "FELINADO FC",
+      "home_score": 1,
+      "away_score": 0,
+      "result": "Win",
+      "date": null
+    },
+    {
+      "index": 9,
+      "home_team": "STARS FC",
+      "away_team": "GABRICHA KENYA",
+      "home_score": 1,
+      "away_score": 3,
+      "result": "Loss",
+      "date": null
+    }
+  ],
+  "form": [
+    "\ud83d\udd34",
+    "\ud83d\udfe2",
+    "\ud83d\udfe2",
+    "\ud83d\udfe2",
+    "\ud83d\udfe0"
+  ],
+  "recent_match_stats": {
+    "home_team": "STARS FC",
+    "away_team": "TYSON VANMERCY",
+    "stats": {
+      "possession": {
+        "home": "61%",
+        "away": "39%"
+      },
+      "shots": {
+        "home": "5",
+        "away": "6"
+      },
+      "shots_on_target": {
+        "home": "4",
+        "away": "4"
+      },
+      "red_cards": {
+        "home": "0",
+        "away": "0"
+      },
+      "fouls": {
+        "home": "0",
+        "away": "0"
+      },
+      "offsides": {
+        "home": "0",
+        "away": "0"
+      },
+      "corners": {
+        "home": "2",
+        "away": "2"
+      },
+      "yellow_cards": {
+        "home": "0",
+        "away": "0"
+      }
+    }
+  },
+  "recent_match_goals": [
+    {
+      "time": "4'",
+      "scorer": "Mbapp\u00e9",
+      "team": "STARS FC",
+      "assist": "No assist"
+    },
+    {
+      "time": "83'",
+      "scorer": "Mbapp\u00e9",
+      "team": "STARS FC",
+      "assist": "No assist"
+    },
+    {
+      "time": "93'",
+      "scorer": "Rice",
+      "team": "STARS FC",
+      "assist": "No assist"
+    },
+    {
+      "time": "109'",
+      "scorer": "Mbapp\u00e9",
+      "team": "STARS FC",
+      "assist": "No assist"
+    },
+    {
+      "time": "120'",
+      "scorer": "Bellingham",
+      "team": "STARS FC",
+      "assist": "No assist"
+    }
+  ]
+}
