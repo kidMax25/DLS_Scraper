@@ -45,7 +45,7 @@ const QuickStatsCard = () => {
   }, [matchHistory]);
   
   return (
-    <div className="rounded-xl border bg-card p-6 shadow hover:shadow-md transition-shadow">
+    <div className="rounded-xl border border-muted/60 bg-transparent p-6 shadow-sm">
       <h3 className="font-semibold text-lg mb-2">{teamName || 'Team'} Stats</h3>
       
       <div className="space-y-4">
@@ -64,7 +64,7 @@ const QuickStatsCard = () => {
           <span className="font-semibold text-arena-error">{stats.gamesLost}</span>
         </div>
         
-        <div className="pt-2 border-t">
+        <div className="pt-2 border-t border-muted/60">
           <div className="flex justify-between items-center">
             <span className="text-muted-foreground">Win Rate</span>
             <span className="font-bold text-lg">{stats.winRate}%</span>

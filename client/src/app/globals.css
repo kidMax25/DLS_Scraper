@@ -63,6 +63,18 @@
   animation: neon-pulse 2s infinite;
 }
 
+.transparent-stats > div {
+  background-color: transparent !important;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .transparent-stats {
+    margin-top: 1rem;
+  }
+}
+
 @keyframes neon-pulse {
   0%, 100% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.8), 

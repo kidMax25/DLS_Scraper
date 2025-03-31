@@ -36,7 +36,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="hidden md:flex h-full w-72 flex-col space-y-4 border-r bg-background p-3">
+    <div className="hidden md:flex h-full w-56 flex-col space-y-4 border-r bg-background p-3">
       <div className="flex flex-col space-y-2">
         {routes.map((route) => (
           <Link

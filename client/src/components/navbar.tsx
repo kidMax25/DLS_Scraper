@@ -13,52 +13,43 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import supabase from '@/lib/supabase';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Navbar() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const { user, logout } = useAuth();
   const [mounted, setMounted] = useState(false);
-  const [firstName, setFirstName] = useState('');
-  const [balance, setBalance] = useState(0);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [balance, setBalance] = useState(0);
   
   useEffect(() => {
-    async function loadUserData() {
-      try {
-        const { data: { user } } = await supabase.auth.getUser();
-        
-        if (user) {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('first_name, team_name, balance, dls_id')
-            .eq('id', user.id)
-            .single();
-            
-          if (profile) {
-            setFirstName(profile.first_name || user.user_metadata?.first_name || '');
-            setBalance(profile.balance || 0);
-            setShowNotifications(!profile.dls_id);
-          }
-        }
-      } catch (error) {
-        console.error('Failed to load user data', error);
-      }
-    }
-    
-    loadUserData();
+    // This just ensures hydration is complete for theme toggling
     setMounted(true);
-  }, []);
+    
+    // Check if user needs to complete profile
+    if (user) {
+      // You might want to fetch additional profile data here if needed
+      // For now, assuming dls_id is part of the user object or can be derived
+      setShowNotifications(!user.dls_id);
+      
+      // Set balance from user data if available
+      setBalance(user.balance || 0);
+    }
+  }, [user]);
 
   const handleLogout = async () => {
     try {
-      await supabase.auth.signOut();
+      await logout();
       router.push('/login');
       router.refresh();
     } catch (error) {
       console.error('Logout failed:', error);
     }
   };
+
+  // Get first name from user object if available
+  const firstName = user?.full_name || '';
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

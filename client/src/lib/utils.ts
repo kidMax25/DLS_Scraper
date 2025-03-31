@@ -63,31 +63,30 @@ export function calculatePercentChange(current: number, previous: number): numbe
 /**
  * Makes API calls to the backend Flask server
  */
-export async function apiCall<T>(
-  endpoint: string, 
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
-  body?: any
-): Promise<T> {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-  
-  const options: RequestInit = {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+export async function apiCall(endpoint: string, options: RequestInit = {}) {
+  // Always include credentials
+  const requestOptions: RequestInit = {
+    ...options,
     credentials: 'include',
+    headers: {
+      ...options.headers,
+      'Content-Type': 'application/json'
+    }
   };
-  
-  if (body) {
-    options.body = JSON.stringify(body);
+
+  try {
+    console.log(`Calling API endpoint: ${endpoint}`);
+    const response = await fetch(endpoint, requestOptions);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`API error (${response.status}):`, errorText);
+      throw new Error(`API error: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error(`Error calling ${endpoint}:`, error);
+    throw error;
   }
-  
-  const response = await fetch(`${API_URL}${endpoint}`, options);
-  
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({ message: 'Something went wrong' }));
-    throw new Error(error.message || 'Something went wrong');
-  }
-  
-  return response.json();
 }

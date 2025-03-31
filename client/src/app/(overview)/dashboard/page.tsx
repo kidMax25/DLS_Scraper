@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import Navbar from '@/components/navbar';
-import Sidebar from '@/components/sidebar';
 import RecentMatchCard from '@/components/cards/recent-match-card';
 import QuickStatsCard from '@/components/cards/quick-stats-card';
 import JoinMatchCard from '@/components/cards/join-match-card';
@@ -28,43 +26,45 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <div className="flex flex-1">
-        <Sidebar />
-        <main className="flex-1 p-6 space-y-8">
-          {/* Welcome message */}
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="lg:w-1/3">
-              <div className="rounded-xl bg-gradient-to-br from-background to-muted p-6 shadow">
+    <div className="space-y-8">
+      {/* Welcome message */}
+      <div className="flex flex-col gap-6">
+        <div className="lg:w-full">
+          <div className="rounded-xl bg-gradient-to-br from-background to-muted p-6 shadow">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
+              <div className="md:w-1/2">
                 <h1 className="text-3xl font-bold mb-2">
                   Welcome, {user?.first_name || 'Player'}
                 </h1>
                 <p className="text-muted-foreground">Get in The Game</p>
               </div>
-            </div>
-
-            {/* Dashboard cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:w-2/3">
-              <RecentMatchCard />
-              <QuickStatsCard />
-              <JoinMatchCard />
-              <BelieveGameCard />
+              <div className="md:w-64 quick-stats-wrapper">
+                <div className="transparent-stats">
+                  <QuickStatsCard />
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Match history table */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Match History</h2>
-            <MatchHistoryTable matches={matches} />
-          </div>
+        {/* Dashboard cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <RecentMatchCard />
+          <JoinMatchCard />
+          <BelieveGameCard />
+        </div>
+      </div>
 
-          {/* Leaderboard */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Top Earners</h2>
-            <Leaderboard />
-          </div>
-        </main>
+      {/* Match history table */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold">Match History</h2>
+        <MatchHistoryTable matches={matches} />
+      </div>
+
+      {/* Leaderboard */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold">Top Earners</h2>
+        <Leaderboard />
       </div>
     </div>
   );
