@@ -7,7 +7,7 @@ interface User {
   id: string;
   email: string;
   full_name?: string;
-  team_id?: string;
+  team_name?: string;
   balance?: number;
   dls_id?: string;
 }
@@ -19,7 +19,7 @@ interface AuthContextType {
   logout: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType | null>(null);
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);

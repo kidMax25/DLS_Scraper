@@ -11,12 +11,18 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import useStore from '@/store';
-import supabase from '@/lib/supabase';
+import { useAuth } from '@/context/AuthContext';
 
 export const ConsentModal = () => {
   const [loading, setLoading] = useState(false);
-  const setShowConsentModal = useStore((state) => state.setShowConsentModal);
+  
+  // Get auth context with your custom hook
+  const { user: authUser, logout } = useAuth();
+  
+  // Using your existing Zustand store
   const user = useStore((state) => state.user);
+  const showConsentModal = useStore((state) => state.showConsentModal);
+  const setShowConsentModal = useStore((state) => state.setShowConsentModal);
 
   const handleAccept = () => {
     setLoading(true);
@@ -27,14 +33,19 @@ export const ConsentModal = () => {
 
   const handleDecline = async () => {
     setLoading(true);
-    if (user) {
-      // Log the user out if they decline
-      await supabase.auth.signOut();
+    if (authUser) {
+      // Log the user out using the auth context
+      await logout();
     }
     setShowConsentModal(false);
     setLoading(false);
     window.location.href = '/';
   };
+
+  // If the modal isn't supposed to be shown, don't render it
+  if (!showConsentModal) {
+    return null;
+  }
 
   return (
     <Dialog open={true} onOpenChange={(open) => !open && handleDecline()}>

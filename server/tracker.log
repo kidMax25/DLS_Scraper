@@ -464,3 +464,21 @@
 2025-03-31 18:48:16,519 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:16] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
 2025-03-31 18:48:21,547 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:21] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
 2025-03-31 18:48:26,856 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:26] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-04-01 12:14:45,573 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-01 12:14:45,585 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-01 12:14:45,633 - INFO -  * Restarting with stat
+2025-04-01 12:14:49,487 - WARNING -  * Debugger is active!
+2025-04-01 12:14:50,022 - INFO -  * Debugger PIN: 142-912-041
+2025-04-01 12:17:50,456 - INFO - 127.0.0.1 - - [01/Apr/2025 12:17:50] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 12:17:58,506 - INFO - 127.0.0.1 - - [01/Apr/2025 12:17:58] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 12:23:01,585 - INFO - 127.0.0.1 - - [01/Apr/2025 12:23:01] "POST /logout HTTP/1.1" 200 -
+2025-04-01 12:24:30,500 - INFO - 127.0.0.1 - - [01/Apr/2025 12:24:30] "POST /login HTTP/1.1" 200 -
+2025-04-01 12:35:39,795 - INFO - 127.0.0.1 - - [01/Apr/2025 12:35:39] "POST /logout HTTP/1.1" 200 -
+2025-04-01 12:35:45,143 - INFO - 127.0.0.1 - - [01/Apr/2025 12:35:45] "POST /login HTTP/1.1" 200 -
+2025-04-01 13:06:02,268 - INFO - 127.0.0.1 - - [01/Apr/2025 13:06:02] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 13:06:07,434 - INFO - 127.0.0.1 - - [01/Apr/2025 13:06:07] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 13:09:05,676 - INFO - 127.0.0.1 - - [01/Apr/2025 13:09:05] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 13:09:07,034 - INFO - 127.0.0.1 - - [01/Apr/2025 13:09:07] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 13:09:13,654 - INFO - 127.0.0.1 - - [01/Apr/2025 13:09:13] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-04-01 13:09:15,520 - INFO - 127.0.0.1 - - [01/Apr/2025 13:09:15] "[33mGET /protected HTTP/1.1[0m" 404 -
