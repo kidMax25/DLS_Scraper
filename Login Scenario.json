@@ -1,0 +1,86 @@
+{
+    "title": "Login Scenario",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 1358,
+            "height": 446,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "http://localhost:3000/login",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "http://localhost:3000/login",
+                    "title": "Legends Arena"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Sign In"
+                ],
+                [
+                    "form > button"
+                ],
+                [
+                    "xpath//html/body/div/div/form/button"
+                ],
+                [
+                    "pierce/form > button"
+                ],
+                [
+                    "text/Sign In"
+                ]
+            ],
+            "offsetY": 28,
+            "offsetX": 19
+        },
+        {
+            "type": "change",
+            "value": "simiyumaxwell27@gmail.com",
+            "selectors": [
+                [
+                    "aria/Email"
+                ],
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "change",
+            "value": "Maxy2001",
+            "selectors": [
+                [
+                    "aria/Password"
+                ],
+                [
+                    "#password"
+                ],
+                [
+                    "xpath///*[@id=\"password\"]"
+                ],
+                [
+                    "pierce/#password"
+                ]
+            ],
+            "target": "main"
+        }
+    ]
+}

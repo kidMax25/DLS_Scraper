@@ -4,8 +4,6 @@ import { ThemeProvider } from 'next-themes';
 import { AuthProvider } from '@/context/AuthContext';
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Navbar from '@/components/navbar';
-import Sidebar from '@/components/sidebar';
 import './globals.css';
 
 const fontSans = FontSans({
@@ -24,10 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="flex flex-col min-h-screen">
-              <Navbar />
+             
               <div className="flex flex-1">
-                <Sidebar />
-                <main className="flex-1 p-6">
+                
+                <main className="flex-1">
                   {children}
                 </main>
               </div>

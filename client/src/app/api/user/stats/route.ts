@@ -14,20 +14,18 @@ export async function GET() {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        // Forward the request to the Flask backend (notice we're using /user/stats not /api/user/stats)
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/stats`, {
+        // Make a simple direct request to Flask backend
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/team-info?team_id=${team_id}`, {
             method: "GET",
-            headers: {
-                "Cookie": `access_token=${token.value}`,
-            },
+            // Don't try to forward cookies or add complex authorization
         });
 
-        if (!res.ok) {
-            console.error("Error fetching stats from backend:", res.status);
-            return NextResponse.json({ error: "Failed to fetch stats" }, { status: res.status });
+        if (!response.ok) {
+            console.error("Error fetching stats from backend:", response.status);
+            return NextResponse.json({ error: "Failed to fetch stats" }, { status: response.status });
         }
 
-        const statsData = await res.json();
+        const statsData = await response.json();
         console.log("Stats data fetched successfully");
         
         return NextResponse.json(statsData, { status: 200 });

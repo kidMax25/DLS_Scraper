@@ -76,3 +76,391 @@
 2025-03-28 23:35:05,748 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:05] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
 2025-03-28 23:35:11,073 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:11] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
 2025-03-28 23:35:16,096 - INFO - 127.0.0.1 - - [28/Mar/2025 23:35:16] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-29 03:54:31,705 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-29 03:54:31,713 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-29 03:54:31,747 - INFO -  * Restarting with stat
+2025-03-29 03:54:33,068 - WARNING -  * Debugger is active!
+2025-03-29 03:54:33,193 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 09:46:07,296 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 09:46:07,685 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 09:46:07,804 - INFO -  * Restarting with stat
+2025-03-31 09:46:08,794 - WARNING -  * Debugger is active!
+2025-03-31 09:46:09,825 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 09:48:19,154 - INFO - 127.0.0.1 - - [31/Mar/2025 09:48:19] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:48:19,354 - INFO - 127.0.0.1 - - [31/Mar/2025 09:48:19] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:49:38,583 - INFO - 127.0.0.1 - - [31/Mar/2025 09:49:38] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:49:38,723 - INFO - 127.0.0.1 - - [31/Mar/2025 09:49:38] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:49:46,182 - INFO - 127.0.0.1 - - [31/Mar/2025 09:49:46] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-03-31 09:50:17,024 - INFO - 127.0.0.1 - - [31/Mar/2025 09:50:17] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+2025-03-31 09:53:43,139 - INFO - 127.0.0.1 - - [31/Mar/2025 09:53:43] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:53:43,296 - INFO - 127.0.0.1 - - [31/Mar/2025 09:53:43] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:55:52,640 - INFO - 127.0.0.1 - - [31/Mar/2025 09:55:52] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 09:55:52,754 - INFO - 127.0.0.1 - - [31/Mar/2025 09:55:52] "[35m[1mGET /protected HTTP/1.1[0m" 500 -
+2025-03-31 10:02:01,381 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:02:02,081 - INFO -  * Restarting with stat
+2025-03-31 10:02:25,180 - WARNING -  * Debugger is active!
+2025-03-31 10:02:25,496 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:02:32,642 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:02:32,717 - INFO -  * Restarting with stat
+2025-03-31 10:02:33,727 - WARNING -  * Debugger is active!
+2025-03-31 10:02:33,732 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:03:27,996 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:03:28,069 - INFO -  * Restarting with stat
+2025-03-31 10:03:29,343 - WARNING -  * Debugger is active!
+2025-03-31 10:03:29,348 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:03:42,445 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:03:42,528 - INFO -  * Restarting with stat
+2025-03-31 10:10:29,986 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 10:10:29,986 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 10:10:29,988 - INFO -  * Restarting with stat
+2025-03-31 10:10:30,891 - WARNING -  * Debugger is active!
+2025-03-31 10:10:30,895 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:12:03,611 - INFO - 127.0.0.1 - - [31/Mar/2025 10:12:03] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:12:03,688 - INFO - 127.0.0.1 - - [31/Mar/2025 10:12:03] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:14:51,062 - INFO - 127.0.0.1 - - [31/Mar/2025 10:14:51] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-03-31 10:16:58,796 - INFO - 127.0.0.1 - - [31/Mar/2025 10:16:58] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:16:58,824 - INFO - 127.0.0.1 - - [31/Mar/2025 10:16:58] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:17:10,851 - INFO - 127.0.0.1 - - [31/Mar/2025 10:17:10] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:22:19,330 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:22:20,015 - INFO -  * Restarting with stat
+2025-03-31 10:22:48,378 - WARNING -  * Debugger is active!
+2025-03-31 10:22:48,382 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:22:55,534 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:22:55,622 - INFO -  * Restarting with stat
+2025-03-31 10:22:56,670 - WARNING -  * Debugger is active!
+2025-03-31 10:22:56,673 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:28:19,783 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:28:19,869 - INFO -  * Restarting with stat
+2025-03-31 10:28:20,968 - WARNING -  * Debugger is active!
+2025-03-31 10:28:20,972 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:28:31,023 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:28:31,102 - INFO -  * Restarting with stat
+2025-03-31 10:28:32,202 - WARNING -  * Debugger is active!
+2025-03-31 10:28:32,206 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:31:41,704 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:31:41,816 - INFO -  * Restarting with stat
+2025-03-31 10:31:43,503 - WARNING -  * Debugger is active!
+2025-03-31 10:31:43,509 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:31:44,532 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:31:44,636 - INFO -  * Restarting with stat
+2025-03-31 10:31:46,161 - WARNING -  * Debugger is active!
+2025-03-31 10:31:46,166 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:35:30,514 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:35:30,625 - INFO -  * Restarting with stat
+2025-03-31 10:35:39,872 - WARNING -  * Debugger is active!
+2025-03-31 10:35:39,879 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:35:47,972 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 10:35:48,068 - INFO -  * Restarting with stat
+2025-03-31 10:35:49,521 - WARNING -  * Debugger is active!
+2025-03-31 10:35:49,525 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:36:04,460 - INFO - 127.0.0.1 - - [31/Mar/2025 10:36:04] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:36:04,661 - INFO - 127.0.0.1 - - [31/Mar/2025 10:36:04] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:36:07,273 - INFO - 127.0.0.1 - - [31/Mar/2025 10:36:07] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:36:10,819 - INFO - 127.0.0.1 - - [31/Mar/2025 10:36:10] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:36:10,969 - INFO - 127.0.0.1 - - [31/Mar/2025 10:36:10] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:37:12,708 - INFO - 127.0.0.1 - - [31/Mar/2025 10:37:12] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:37:12,794 - INFO - 127.0.0.1 - - [31/Mar/2025 10:37:12] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:37:13,775 - INFO - 127.0.0.1 - - [31/Mar/2025 10:37:13] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:37:18,092 - INFO - 127.0.0.1 - - [31/Mar/2025 10:37:18] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:37:22,207 - INFO - 127.0.0.1 - - [31/Mar/2025 10:37:22] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:38:14,518 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 10:38:14,518 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 10:38:14,520 - INFO -  * Restarting with stat
+2025-03-31 10:38:15,724 - WARNING -  * Debugger is active!
+2025-03-31 10:38:15,728 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 10:42:31,600 - INFO - 127.0.0.1 - - [31/Mar/2025 10:42:31] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:43:31,413 - INFO - 127.0.0.1 - - [31/Mar/2025 10:43:31] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:43:31,707 - INFO - 127.0.0.1 - - [31/Mar/2025 10:43:31] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:43:41,963 - INFO - 127.0.0.1 - - [31/Mar/2025 10:43:41] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:44:24,485 - INFO - 127.0.0.1 - - [31/Mar/2025 10:44:24] "POST /login HTTP/1.1" 200 -
+2025-03-31 10:44:38,489 - INFO - 127.0.0.1 - - [31/Mar/2025 10:44:38] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:44:38,586 - INFO - 127.0.0.1 - - [31/Mar/2025 10:44:38] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 10:44:40,205 - INFO - 127.0.0.1 - - [31/Mar/2025 10:44:40] "POST /login HTTP/1.1" 200 -
+2025-03-31 11:06:51,009 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 11:06:53,334 - INFO -  * Restarting with stat
+2025-03-31 11:07:08,575 - WARNING -  * Debugger is active!
+2025-03-31 11:07:08,698 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 11:07:27,792 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 11:07:27,873 - INFO -  * Restarting with stat
+2025-03-31 11:07:28,843 - WARNING -  * Debugger is active!
+2025-03-31 11:07:28,859 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 11:07:30,883 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 11:07:30,962 - INFO -  * Restarting with stat
+2025-03-31 11:07:32,035 - WARNING -  * Debugger is active!
+2025-03-31 11:07:32,039 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 11:09:11,469 - INFO - 127.0.0.1 - - [31/Mar/2025 11:09:11] "POST /login HTTP/1.1" 200 -
+2025-03-31 11:10:55,455 - INFO - 127.0.0.1 - - [31/Mar/2025 11:10:55] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:11:01,194 - INFO - 127.0.0.1 - - [31/Mar/2025 11:11:01] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:11:02,473 - INFO - 127.0.0.1 - - [31/Mar/2025 11:11:02] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:11:02,509 - INFO - 127.0.0.1 - - [31/Mar/2025 11:11:02] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:05,307 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:05] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:05,313 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:05] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:08,178 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:08] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:08,505 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:08] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:13,191 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:13] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:13,203 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:13] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:17,555 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:17] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:17,909 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:17] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:27,752 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:27] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:17:27,754 - INFO - 127.0.0.1 - - [31/Mar/2025 11:17:27] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:18:50,321 - INFO - 127.0.0.1 - - [31/Mar/2025 11:18:50] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:18:50,404 - INFO - 127.0.0.1 - - [31/Mar/2025 11:18:50] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:18:53,562 - INFO - 127.0.0.1 - - [31/Mar/2025 11:18:53] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:18:53,571 - INFO - 127.0.0.1 - - [31/Mar/2025 11:18:53] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:18:57,156 - INFO - 127.0.0.1 - - [31/Mar/2025 11:18:57] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:18:57,468 - INFO - 127.0.0.1 - - [31/Mar/2025 11:18:57] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:20:01,272 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 11:20:02,091 - INFO -  * Restarting with stat
+2025-03-31 11:20:14,852 - WARNING -  * Debugger is active!
+2025-03-31 11:20:14,855 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 11:20:35,636 - INFO - 127.0.0.1 - - [31/Mar/2025 11:20:35] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:20:36,219 - INFO - 127.0.0.1 - - [31/Mar/2025 11:20:36] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:20:36,379 - INFO - 127.0.0.1 - - [31/Mar/2025 11:20:36] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:20:36,412 - INFO - 127.0.0.1 - - [31/Mar/2025 11:20:36] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:35:31,842 - INFO - 127.0.0.1 - - [31/Mar/2025 11:35:31] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:35:31,893 - INFO - 127.0.0.1 - - [31/Mar/2025 11:35:31] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:35:42,934 - INFO - 127.0.0.1 - - [31/Mar/2025 11:35:42] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:35:43,042 - INFO - 127.0.0.1 - - [31/Mar/2025 11:35:43] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 11:36:03,599 - INFO - 127.0.0.1 - - [31/Mar/2025 11:36:03] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 11:36:03,600 - INFO - 127.0.0.1 - - [31/Mar/2025 11:36:03] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:36:18,474 - INFO - 127.0.0.1 - - [31/Mar/2025 12:36:18] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:36:18,475 - INFO - 127.0.0.1 - - [31/Mar/2025 12:36:18] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:24,112 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:24] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 12:37:24,589 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:24] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 12:37:24,621 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:24] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:24,667 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:24] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:41,965 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:41] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:41,968 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:41] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:48,785 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:48] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:49,009 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:49] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:55,748 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:55] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:37:56,394 - INFO - 127.0.0.1 - - [31/Mar/2025 12:37:56] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:38:02,507 - INFO - 127.0.0.1 - - [31/Mar/2025 12:38:02] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:38:02,508 - INFO - 127.0.0.1 - - [31/Mar/2025 12:38:02] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:39:50,449 - INFO - 127.0.0.1 - - [31/Mar/2025 12:39:50] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:39:53,626 - INFO - 127.0.0.1 - - [31/Mar/2025 12:39:53] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:40:06,810 - INFO - 127.0.0.1 - - [31/Mar/2025 12:40:06] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:40:06,812 - INFO - 127.0.0.1 - - [31/Mar/2025 12:40:06] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:40:20,041 - INFO - 127.0.0.1 - - [31/Mar/2025 12:40:20] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 12:40:20,043 - INFO - 127.0.0.1 - - [31/Mar/2025 12:40:20] "[33mOPTIONS /api/user/stats HTTP/1.1[0m" 404 -
+2025-03-31 14:50:39,201 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 14:50:39,201 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 14:50:39,203 - INFO -  * Restarting with stat
+2025-03-31 14:50:40,326 - WARNING -  * Debugger is active!
+2025-03-31 14:50:40,442 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 14:51:30,760 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 14:51:31,004 - INFO -  * Restarting with stat
+2025-03-31 14:51:32,374 - WARNING -  * Debugger is active!
+2025-03-31 14:51:32,381 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 14:51:33,398 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 14:51:33,475 - INFO -  * Restarting with stat
+2025-03-31 14:51:34,485 - WARNING -  * Debugger is active!
+2025-03-31 14:51:34,491 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 15:05:24,487 - INFO - 127.0.0.1 - - [31/Mar/2025 15:05:24] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:05:24,819 - INFO - 127.0.0.1 - - [31/Mar/2025 15:05:24] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:05:26,150 - INFO - 127.0.0.1 - - [31/Mar/2025 15:05:26] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:05:26,256 - INFO - 127.0.0.1 - - [31/Mar/2025 15:05:26] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:33:37,636 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 15:33:37,975 - INFO -  * Restarting with stat
+2025-03-31 15:41:43,797 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 15:41:43,798 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 15:41:43,804 - INFO -  * Restarting with stat
+2025-03-31 15:41:44,777 - WARNING -  * Debugger is active!
+2025-03-31 15:41:44,877 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 15:42:25,324 - INFO - 127.0.0.1 - - [31/Mar/2025 15:42:25] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:42:25,804 - INFO - 127.0.0.1 - - [31/Mar/2025 15:42:25] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:42:25,952 - INFO - 127.0.0.1 - - [31/Mar/2025 15:42:25] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:42:26,371 - INFO - 127.0.0.1 - - [31/Mar/2025 15:42:26] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:45:27,347 - INFO - 127.0.0.1 - - [31/Mar/2025 15:45:27] "GET /status HTTP/1.1" 200 -
+2025-03-31 15:45:27,789 - INFO - 127.0.0.1 - - [31/Mar/2025 15:45:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-31 15:47:20,833 - INFO - 127.0.0.1 - - [31/Mar/2025 15:47:20] "POST /logout HTTP/1.1" 200 -
+2025-03-31 15:47:44,133 - INFO - 127.0.0.1 - - [31/Mar/2025 15:47:44] "POST /login HTTP/1.1" 200 -
+2025-03-31 15:47:48,730 - INFO - 127.0.0.1 - - [31/Mar/2025 15:47:48] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:47:49,139 - INFO - 127.0.0.1 - - [31/Mar/2025 15:47:49] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:52:10,887 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 15:52:11,003 - INFO -  * Restarting with stat
+2025-03-31 15:52:12,834 - WARNING -  * Debugger is active!
+2025-03-31 15:52:12,841 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 15:52:13,859 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 15:52:13,954 - INFO -  * Restarting with stat
+2025-03-31 15:52:15,270 - WARNING -  * Debugger is active!
+2025-03-31 15:52:15,277 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 15:54:16,290 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 15:54:16,365 - INFO -  * Restarting with stat
+2025-03-31 15:54:17,540 - WARNING -  * Debugger is active!
+2025-03-31 15:54:17,546 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 15:56:07,771 - INFO - 127.0.0.1 - - [31/Mar/2025 15:56:07] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:56:08,244 - INFO - 127.0.0.1 - - [31/Mar/2025 15:56:08] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:56:16,379 - INFO - 127.0.0.1 - - [31/Mar/2025 15:56:16] "POST /login HTTP/1.1" 200 -
+2025-03-31 15:57:38,504 - INFO - 127.0.0.1 - - [31/Mar/2025 15:57:38] "[31m[1mGET /protected HTTP/1.1[0m" 401 -
+2025-03-31 15:57:42,667 - INFO - 127.0.0.1 - - [31/Mar/2025 15:57:42] "POST /logout HTTP/1.1" 200 -
+2025-03-31 15:57:49,900 - INFO - 127.0.0.1 - - [31/Mar/2025 15:57:49] "POST /login HTTP/1.1" 200 -
+2025-03-31 15:57:57,568 - INFO - 127.0.0.1 - - [31/Mar/2025 15:57:57] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:57:57,722 - INFO - 127.0.0.1 - - [31/Mar/2025 15:57:57] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 15:59:36,642 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 15:59:37,050 - INFO -  * Restarting with stat
+2025-03-31 15:59:44,023 - WARNING -  * Debugger is active!
+2025-03-31 15:59:44,029 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:01:10,549 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:01:10,622 - INFO -  * Restarting with stat
+2025-03-31 16:01:11,605 - WARNING -  * Debugger is active!
+2025-03-31 16:01:11,614 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:01:21,669 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:01:21,764 - INFO -  * Restarting with stat
+2025-03-31 16:01:22,743 - WARNING -  * Debugger is active!
+2025-03-31 16:01:22,749 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:01:24,769 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:01:24,840 - INFO -  * Restarting with stat
+2025-03-31 16:01:25,773 - WARNING -  * Debugger is active!
+2025-03-31 16:01:25,778 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:01:41,856 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:01:41,926 - INFO -  * Restarting with stat
+2025-03-31 16:01:42,850 - WARNING -  * Debugger is active!
+2025-03-31 16:01:42,855 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:02:17,001 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:02:17,088 - INFO -  * Restarting with stat
+2025-03-31 16:02:18,562 - WARNING -  * Debugger is active!
+2025-03-31 16:02:18,568 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:02:33,646 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:02:33,722 - INFO -  * Restarting with stat
+2025-03-31 16:02:34,703 - WARNING -  * Debugger is active!
+2025-03-31 16:02:34,711 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:02:35,732 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:02:35,804 - INFO -  * Restarting with stat
+2025-03-31 16:02:36,763 - WARNING -  * Debugger is active!
+2025-03-31 16:02:36,768 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:02:38,791 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:02:38,902 - INFO -  * Restarting with stat
+2025-03-31 16:02:40,161 - WARNING -  * Debugger is active!
+2025-03-31 16:02:40,167 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:02:53,248 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:02:53,393 - INFO -  * Restarting with stat
+2025-03-31 16:02:54,622 - WARNING -  * Debugger is active!
+2025-03-31 16:02:54,628 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:03:17,753 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:03:17,867 - INFO -  * Restarting with stat
+2025-03-31 16:03:19,271 - WARNING -  * Debugger is active!
+2025-03-31 16:03:19,278 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:03:37,364 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:03:37,443 - INFO -  * Restarting with stat
+2025-03-31 16:03:38,421 - WARNING -  * Debugger is active!
+2025-03-31 16:03:38,427 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:03:39,446 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:03:39,517 - INFO -  * Restarting with stat
+2025-03-31 16:03:40,473 - WARNING -  * Debugger is active!
+2025-03-31 16:03:40,479 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:03:44,508 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:03:44,709 - INFO -  * Restarting with stat
+2025-03-31 16:03:45,768 - WARNING -  * Debugger is active!
+2025-03-31 16:03:45,774 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:04:04,524 - INFO - 127.0.0.1 - - [31/Mar/2025 16:04:04] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:04:05,932 - INFO - 127.0.0.1 - - [31/Mar/2025 16:04:05] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:04:06,007 - INFO - 127.0.0.1 - - [31/Mar/2025 16:04:06] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:04:06,747 - INFO - 127.0.0.1 - - [31/Mar/2025 16:04:06] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:05:09,242 - INFO - 127.0.0.1 - - [31/Mar/2025 16:05:09] "POST /logout HTTP/1.1" 200 -
+2025-03-31 16:05:17,767 - INFO - 127.0.0.1 - - [31/Mar/2025 16:05:17] "POST /login HTTP/1.1" 200 -
+2025-03-31 16:05:21,129 - INFO - 127.0.0.1 - - [31/Mar/2025 16:05:21] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:05:21,412 - INFO - 127.0.0.1 - - [31/Mar/2025 16:05:21] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:06:22,925 - INFO - 127.0.0.1 - - [31/Mar/2025 16:06:22] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-03-31 16:06:36,738 - INFO - 127.0.0.1 - - [31/Mar/2025 16:06:36] "POST /login HTTP/1.1" 200 -
+2025-03-31 16:06:37,652 - INFO - 127.0.0.1 - - [31/Mar/2025 16:06:37] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:06:37,786 - INFO - 127.0.0.1 - - [31/Mar/2025 16:06:37] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:35:19,355 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:35:19,430 - INFO -  * Restarting with stat
+2025-03-31 16:35:22,332 - WARNING -  * Debugger is active!
+2025-03-31 16:35:22,338 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:39:35,701 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:39:35,779 - INFO -  * Restarting with stat
+2025-03-31 16:39:37,225 - WARNING -  * Debugger is active!
+2025-03-31 16:39:37,231 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:39:39,252 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:39:39,324 - INFO -  * Restarting with stat
+2025-03-31 16:39:40,259 - WARNING -  * Debugger is active!
+2025-03-31 16:39:40,265 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:40:08,259 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:08] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:40:08,279 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:08] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:40:13,580 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:13] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:40:18,186 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:18] "POST /logout HTTP/1.1" 200 -
+2025-03-31 16:40:27,314 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:27] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-03-31 16:40:37,606 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:37] "POST /login HTTP/1.1" 200 -
+2025-03-31 16:40:38,452 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:38] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:40:38,459 - INFO - 127.0.0.1 - - [31/Mar/2025 16:40:38] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:41:26,808 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:41:26,883 - INFO -  * Restarting with stat
+2025-03-31 16:41:54,269 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 16:41:54,269 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 16:41:54,270 - INFO -  * Restarting with stat
+2025-03-31 16:41:55,180 - WARNING -  * Debugger is active!
+2025-03-31 16:41:55,186 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:42:03,807 - INFO - 127.0.0.1 - - [31/Mar/2025 16:42:03] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:42:03,901 - INFO - 127.0.0.1 - - [31/Mar/2025 16:42:03] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:42:04,078 - INFO - 127.0.0.1 - - [31/Mar/2025 16:42:04] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:42:04,081 - INFO - 127.0.0.1 - - [31/Mar/2025 16:42:04] "[31m[1mGET /user/stats HTTP/1.1[0m" 401 -
+2025-03-31 16:44:06,143 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:44:06,215 - INFO -  * Restarting with stat
+2025-03-31 16:44:07,252 - WARNING -  * Debugger is active!
+2025-03-31 16:44:07,258 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:44:24,338 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:44:24,408 - INFO -  * Restarting with stat
+2025-03-31 16:44:25,383 - WARNING -  * Debugger is active!
+2025-03-31 16:44:25,389 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:44:28,414 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:44:28,492 - INFO -  * Restarting with stat
+2025-03-31 16:44:29,563 - WARNING -  * Debugger is active!
+2025-03-31 16:44:29,570 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:44:34,606 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:44:34,678 - INFO -  * Restarting with stat
+2025-03-31 16:44:35,631 - WARNING -  * Debugger is active!
+2025-03-31 16:44:35,640 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:44:36,661 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:44:36,770 - INFO -  * Restarting with stat
+2025-03-31 16:44:37,942 - WARNING -  * Debugger is active!
+2025-03-31 16:44:37,949 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:47:38,825 - INFO -  * Detected change in 'C:\\Users\\snmax\\Documents\\Projects\\dls_tracker\\server\\app.py', reloading
+2025-03-31 16:47:38,902 - INFO -  * Restarting with stat
+2025-03-31 16:56:36,746 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 16:56:36,746 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 16:56:36,747 - INFO -  * Restarting with stat
+2025-03-31 16:56:37,657 - WARNING -  * Debugger is active!
+2025-03-31 16:56:37,663 - INFO -  * Debugger PIN: 142-912-041
+2025-03-31 16:56:46,222 - INFO - 127.0.0.1 - - [31/Mar/2025 16:56:46] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:56:46,857 - INFO - 127.0.0.1 - - [31/Mar/2025 16:56:46] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 16:56:48,822 - INFO - 127.0.0.1 - - [31/Mar/2025 16:56:48] "[33mGET /user/stats HTTP/1.1[0m" 404 -
+2025-03-31 16:56:49,530 - INFO - 127.0.0.1 - - [31/Mar/2025 16:56:49] "[33mGET /user/stats HTTP/1.1[0m" 404 -
+2025-03-31 16:57:03,636 - INFO - 127.0.0.1 - - [31/Mar/2025 16:57:03] "POST /logout HTTP/1.1" 200 -
+2025-03-31 16:58:11,005 - INFO - 127.0.0.1 - - [31/Mar/2025 16:58:11] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-03-31 16:59:18,399 - INFO - 127.0.0.1 - - [31/Mar/2025 16:59:18] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-03-31 16:59:31,179 - INFO - 127.0.0.1 - - [31/Mar/2025 16:59:31] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+2025-03-31 17:33:33,622 - INFO - 127.0.0.1 - - [31/Mar/2025 17:33:33] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-03-31 18:01:57,783 - INFO - 127.0.0.1 - - [31/Mar/2025 18:01:57] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 18:01:59,546 - INFO - 127.0.0.1 - - [31/Mar/2025 18:01:59] "[33mGET /protected HTTP/1.1[0m" 404 -
+2025-03-31 18:47:16,833 - INFO - 127.0.0.1 - - [31/Mar/2025 18:47:16] "GET /test HTTP/1.1" 200 -
+2025-03-31 18:47:34,811 - INFO - ====== WebDriver manager ======
+2025-03-31 18:47:34,812 - INFO - 127.0.0.1 - - [31/Mar/2025 18:47:34] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:47:37,813 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-31 18:47:38,639 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-31 18:47:39,448 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-31 18:47:40,140 - INFO - 127.0.0.1 - - [31/Mar/2025 18:47:40] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:47:41,395 - INFO - WebDriver version 134.0.6998.165 selected
+2025-03-31 18:47:41,400 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/win32/chromedriver-win32.zip
+2025-03-31 18:47:41,400 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/win32/chromedriver-win32.zip
+2025-03-31 18:47:41,572 - INFO - Driver downloading response is 200
+2025-03-31 18:47:45,165 - INFO - 127.0.0.1 - - [31/Mar/2025 18:47:45] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:47:48,951 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-31 18:47:49,891 - INFO - Driver has been saved in cache [C:\Users\snmax\.wdm\drivers\chromedriver\win64\134.0.6998.165]
+2025-03-31 18:47:50,499 - INFO - 127.0.0.1 - - [31/Mar/2025 18:47:50] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:47:55,521 - INFO - 127.0.0.1 - - [31/Mar/2025 18:47:55] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:48:00,849 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:00] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:48:06,169 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:06] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:48:11,197 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:11] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:48:16,519 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:16] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:48:21,547 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:21] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -
+2025-03-31 18:48:26,856 - INFO - 127.0.0.1 - - [31/Mar/2025 18:48:26] "GET /team-info?team_id=4c51fw0c HTTP/1.1" 200 -

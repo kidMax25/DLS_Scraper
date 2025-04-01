@@ -9,17 +9,421 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import threading
 import traceback
-
+import requests
+from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required, verify_jwt_in_request
+import os
+from flask_jwt_extended.exceptions import JWTExtendedException
 # Import the optimized tracker functions
 from Tracker import get_team_data
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'Z9qilGEJQpAvFdby6C5sVGeChCwLjdFUYxVtII0qpXw4GTtPwhb7QbRzwd4qqmIcdQ5Nm1YQIz6xtcT4gQRbLQ==')
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 60 * 60 * 24 * 7  # 7 days
+app.config['JWT_COOKIE_SECURE'] = os.environ.get('FLASK_ENV') != 'development'  # Only send cookies over HTTPS in production
+app.config['JWT_COOKIE_CSRF_PROTECT'] = True  # Protect against CSRF
+app.config['JWT_ACCESS_COOKIE_NAME'] = 'access_token'  # This was missing! Specify where to look for tokens
+app.config['JWT_COOKIE_SAMESITE'] = 'Lax'
+app.config['JWT_TOKEN_LOCATION'] = ['cookies', 'headers'] 
+app.config['JWT_HEADER_NAME'] = 'Authorization'
+app.config['JWT_HEADER_TYPE'] = 'Bearer'
+# app.config['JWT_ACCESS_COOKIE_PATH'] = '/'
 
+CORS(app, 
+     supports_credentials=True, 
+     origins=[os.environ.get('NEXT_PUBLIC_FRONTEND_URL', 'http://localhost:3000')],
+     allow_headers=["Content-Type", "Authorization", "Accept", "Origin"],
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     expose_headers=["Set-Cookie"])
+
+jwt = JWTManager(app)
+
+
+# Add this to handle failed token verification
+@jwt.unauthorized_loader
+def unauthorized_callback(error):
+    print("Missing token:", error)
+    return jsonify({"error": "Unauthorized access - No valid token provided"}), 401
+
+@jwt.invalid_token_loader
+def invalid_token_callback(error):
+    print("Invalid token:", error)
+    return jsonify({"error": "Invalid token"}), 401
+
+@jwt.expired_token_loader
+def expired_token_callback(jwt_header, jwt_payload):
+    print("Token has expired:", jwt_payload)
+    return jsonify({"error": "Token has expired"}), 401
+
+
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_AUTH_URL = f"{SUPABASE_URL}/auth/v1/user"
+
+def verify_jwt(token):
+    headers = {"Authorization": f"Bearer {token}", "apikey": SUPABASE_KEY}
+    response = requests.get(SUPABASE_AUTH_URL, headers=headers)
+    return response.json() if response.status_code == 200 else None
+
+@jwt.token_verification_failed_loader
+def token_verification_failed_callback(jwt_header, jwt_payload):
+    print("Token verification failed")
+    return jsonify({"error": "Token verification failed"}), 401
+
+@app.errorhandler(JWTExtendedException)
+def handle_jwt_exceptions(error):
+    print(f"JWT Exception: {str(error)}")
+    return jsonify({"error": str(error)}), 401
+
+@app.route('/register', methods=['POST'])
+def register():
+    """Register a new user"""
+    try:
+        # Get JSON data
+        data = request.json
+        print("Registration data received:", data)  # Debugging
+        
+        # Extract required fields
+        email = data.get("email")
+        password = data.get("password")
+        full_name = data.get("full_name")  # Still get full_name from request
+        team_id = data.get("team_id")
+        
+        # Validate all required fields
+        if not email:
+            return jsonify({"error": "Email is required"}), 400
+        if not password:
+            return jsonify({"error": "Password is required"}), 400
+        if not full_name:
+            return jsonify({"error": "Name is required"}), 400
+        if not team_id:
+            return jsonify({"error": "Team ID is required"}), 400
+            
+        # Validate team ID format if needed
+        if not re.match(r'^[a-z0-9]{8}$', str(team_id).lower()):
+            return jsonify({"error": "Team ID must be 8 alphanumeric characters"}), 400
+
+        # Register user with Supabase Auth
+        response = requests.post(f"{SUPABASE_URL}/auth/v1/signup", json={
+            "email": email,
+            "password": password
+        }, headers={"apikey": SUPABASE_KEY})
+
+        if response.status_code == 400:
+            # User might already exist
+            error_msg = response.json().get("msg", "Registration failed")
+            return jsonify({"error": error_msg}), 400
+        
+        if response.status_code != 200:
+            print("Supabase signup error:", response.text)  # Debugging
+            return jsonify({"error": "Registration failed"}), 400
+
+        user_id = response.json().get("id")  # Get user ID
+        if not user_id:
+            print("No user ID in response:", response.json())  # Debugging
+            return jsonify({"error": "Failed to create user account"}), 500
+
+        # Create a profile in `profiles` table - use first_name instead of full_name
+        profile_response = requests.post(
+            f"{SUPABASE_URL}/rest/v1/profiles", 
+            json={
+                "id": user_id,
+                "first_name": full_name,  # Changed to first_name to match the database schema
+                "team_id": team_id
+            }, 
+            headers={
+                "apikey": SUPABASE_KEY, 
+                "Authorization": f"Bearer {SUPABASE_KEY}",
+                "Content-Type": "application/json",
+                "Prefer": "return=minimal"
+            }
+        )
+        
+        if profile_response.status_code not in [200, 201]:
+            print("Profile creation error:", profile_response.text)  # Debugging
+            # Clean up the user if profile creation fails
+            requests.delete(
+                f"{SUPABASE_URL}/auth/v1/user/{user_id}",
+                headers={"apikey": SUPABASE_KEY, "Authorization": f"Bearer {SUPABASE_KEY}"}
+            )
+            return jsonify({"error": "Failed to create user profile"}), 500
+
+        # Check if confirmation email is required
+        requires_confirmation = response.json().get("confirmation_sent_at") is not None
+
+        return jsonify({
+            "success": True, 
+            "message": "User registered successfully. Please check your email for confirmation link." if requires_confirmation else "User registered successfully. You can now log in.",
+            "requires_confirmation": requires_confirmation
+        }), 201
+    
+    except Exception as e:
+        print(f"Registration error: {str(e)}")
+        print(traceback.format_exc())  # Print full traceback
+        return jsonify({"error": "An unexpected error occurred"}), 500
+
+@app.route('/login', methods=['POST'])
+def login():
+    """Handle user login"""
+    try:
+        data = request.json
+        email = data.get("email")
+        password = data.get("password")
+
+        print(f"Login attempt for {email}")
+
+        if not email or not password:
+            return jsonify({"error": "Email and password are required"}), 400
+
+        # Authenticate with Supabase
+        response = requests.post(
+            f"{SUPABASE_URL}/auth/v1/token?grant_type=password", 
+            json={
+                "email": email,
+                "password": password
+            }, 
+            headers={"apikey": SUPABASE_KEY}
+        )
+
+        print(f"Supabase response: {response.status_code}")
+        
+        if response.status_code != 200:
+            # Log the error for debugging
+            error_data = response.json() if response.text else "No response data"
+            print(f"Login failed: {error_data}")
+            return jsonify({"error": "Invalid credentials"}), 401
+
+        # Parse the response
+        user_data = response.json()
+        print(f"User authenticated successfully: {user_data.get('user', {}).get('id')}")
+        
+        user_id = user_data.get("user", {}).get("id")
+        if not user_id:
+            print("No user ID found in response")
+            return jsonify({"error": "Authentication error"}), 500
+
+        # Create an access token with the user_id
+        access_token = create_access_token(identity=user_id)
+        
+        # Create a response
+        resp = jsonify({"success": True, "message": "Login successful"})
+        
+        # Log the token for debugging
+        print(f"Generated JWT token (first 20 chars): {access_token[:20]}...")
+        
+        # Set the JWT as a cookie with explicit parameters
+        max_age = 60*60*24*7  # 7 days
+        resp.set_cookie(
+            "access_token", 
+            access_token, 
+            httponly=True, 
+            secure=app.config.get('JWT_COOKIE_SECURE', False), 
+            samesite="Strict", 
+            max_age=max_age,
+            path="/"
+        )
+        
+        print(f"Login successful, token set for user {user_id}")
+        print(f"Response headers: {dict(resp.headers)}")
+        return resp
+        
+    except Exception as e:
+        print(f"Login error: {str(e)}")
+        print(traceback.format_exc())  # Print full traceback
+        return jsonify({"error": "An unexpected error occurred"}), 500
 # In-memory storage for matches
 matches = {}
 active_scrapes = {}
 team_data_cache = {}
+
+# Add a logout route
+@app.route('/logout', methods=['POST'])
+def logout():
+    resp = jsonify({"success": True, "message": "Logged out successfully"})
+    resp.delete_cookie("access_token")
+    return resp
+
+@app.route('/protected', methods=['GET'])
+def protected():
+    try:
+        # Manually extract and verify JWT token from cookies
+        token = request.cookies.get('access_token')
+        
+        # Log information about the request
+        print(f"Protected route accessed")
+        print(f"Request headers: {dict(request.headers)}")
+        print(f"Request cookies: {dict(request.cookies)}")
+        print(f"Access token present: {token is not None}")
+        
+        if not token:
+            print("No access token in cookies")
+            return jsonify({"error": "Unauthorized access - No token"}), 401
+        
+        try:
+            # Verify the token manually
+            from flask_jwt_extended import decode_token, get_jwt_identity
+            decoded_token = decode_token(token)
+            user_id = decoded_token.get('sub')  # 'sub' is where the identity is stored
+            
+            print(f"Token successfully decoded, user_id: {user_id}")
+        except Exception as e:
+            print(f"Token verification failed: {str(e)}")
+            return jsonify({"error": f"Invalid token: {str(e)}"}), 401
+        
+        # Token is valid, get user data from Supabase
+        headers = {
+            "apikey": SUPABASE_KEY,
+            "Authorization": f"Bearer {SUPABASE_KEY}"
+        }
+        
+        # Get user profile
+        profile_response = requests.get(
+            f"{SUPABASE_URL}/rest/v1/profiles?id=eq.{user_id}&select=*",
+            headers=headers
+        )
+        
+        if profile_response.status_code != 200 or not profile_response.json():
+            print(f"User profile not found for ID: {user_id}")
+            return jsonify({"error": "User not found"}), 404
+            
+        profile = profile_response.json()[0]
+        print(f"Retrieved profile: {profile}")
+        
+        # Get user auth data
+        auth_response = requests.get(
+            f"{SUPABASE_URL}/auth/v1/user/{user_id}",
+            headers=headers
+        )
+        
+        if auth_response.status_code != 200:
+            print(f"Failed to get auth data: {auth_response.status_code}")
+            return jsonify({"error": "Could not retrieve user data"}), 500
+            
+        auth_data = auth_response.json()
+        
+        # Combine the data with all available profile fields
+        user_data = {
+            "id": user_id,
+            "email": auth_data.get("email"),
+            "full_name": profile.get("first_name"),  # Map first_name to full_name for frontend
+            "team_id": profile.get("team_id"),
+            "balance": profile.get("balance", 0),
+            "dls_id": profile.get("dls_id")
+            # Add any other fields you need from the profile
+        }
+        
+        print(f"Returning user data: {user_data}")
+        return jsonify(user_data)
+    except Exception as e:
+        print(f"Protected route error: {str(e)}")
+        print(traceback.format_exc())  # Print full traceback
+        return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
+
+@app.route('/confirm', methods=['GET'])
+def confirm_email():
+    """Handle email confirmation"""
+    # Get token from URL parameters
+    token_hash = request.args.get('token_hash')
+    type = request.args.get('type')
+    
+    if not token_hash or type != 'signup':
+        return redirect(f"{os.environ.get('NEXT_PUBLIC_FRONTEND_URL', 'http://localhost:3000')}/login?error=invalid_confirmation_link")
+    
+    try:
+        # Confirm the user with Supabase
+        response = requests.post(
+            f"{SUPABASE_URL}/auth/v1/verify", 
+            json={
+                "type": "signup",
+                "token": token_hash
+            },
+            headers={"apikey": SUPABASE_KEY}
+        )
+        
+        if response.status_code != 200:
+            print("Email confirmation error:", response.text)
+            return redirect(f"{os.environ.get('NEXT_PUBLIC_FRONTEND_URL', 'http://localhost:3000')}/login?error=confirmation_failed")
+            
+        # Get user data from response
+        user_data = response.json()
+        
+        # Create access token for the user
+        access_token = create_access_token(identity=user_data.get('id'))
+        
+        # Redirect to frontend with cookie
+        resp = redirect(f"{os.environ.get('NEXT_PUBLIC_FRONTEND_URL', 'http://localhost:3000')}/")
+        
+        # Set the JWT as a cookie
+        resp.set_cookie(
+            "access_token", 
+            access_token, 
+            httponly=True, 
+            secure=app.config.get('JWT_COOKIE_SECURE', False), 
+            samesite="Strict", 
+            max_age=60*60*24*7  # 7 days
+        )
+        
+        return resp
+        
+    except Exception as e:
+        print(f"Confirmation error: {str(e)}")
+        print(traceback.format_exc())
+        return redirect(f"{os.environ.get('NEXT_PUBLIC_FRONTEND_URL', 'http://localhost:3000')}/login?error=confirmation_failed")
+
+@app.route('/user/stats', methods=['GET'])
+@jwt_required(locations = ["cookies"])
+def user_stats():
+    try:
+        # Get the user identity from the JWT
+        user_id = get_jwt_identity()
+        print(f"Fetching stats for user: {user_id}")
+        
+        # Get user data from Supabase
+        headers = {
+            "apikey": SUPABASE_KEY,
+            "Authorization": f"Bearer {SUPABASE_KEY}"
+        }
+        
+        # Get user profile
+        profile_response = requests.get(
+            f"{SUPABASE_URL}/rest/v1/profiles?id=eq.{user_id}&select=*",
+            headers=headers
+        )
+        
+        if profile_response.status_code != 200 or not profile_response.json():
+            return jsonify({"error": "User not found"}), 404
+            
+        profile = profile_response.json()[0]
+        
+        # You can fetch additional data from other tables if needed
+        
+        # For now, return some basic stats
+        stats = {
+            "matches_played": profile.get("matches_played", 0),
+            "wins": profile.get("wins", 0),
+            "losses": profile.get("losses", 0),
+            "draws": profile.get("draws", 0),
+            "goals_scored": profile.get("goals_scored", 0),
+            "goals_conceded": profile.get("goals_conceded", 0),
+            "win_percentage": calculate_win_percentage(profile),
+            "recent_form": profile.get("form", "")
+        }
+        
+        return jsonify(stats)
+    except Exception as e:
+        print(f"User stats error: {str(e)}")
+        print(traceback.format_exc())  # Print full traceback
+        return jsonify({"error": "An unexpected error occurred"}), 500
+
+def calculate_win_percentage(profile):
+    """Calculate win percentage based on matches played"""
+    matches_played = profile.get("matches_played", 0)
+    wins = profile.get("wins", 0)
+    
+    if matches_played == 0:
+        return 0
+    
+    return round((wins / matches_played) * 100)
 
 def generate_match_code():
     """Generate a unique match code in the format ARN + 3 random numbers"""
@@ -269,6 +673,63 @@ def status():
         "cached_teams": len(team_data_cache)
     })
 
+@app.route('/debug', methods=['GET'])
+def debug_info():
+    """Endpoint for debugging authentication"""
+    auth_header = request.headers.get('Authorization', '')
+    cookie_header = request.headers.get('Cookie', '')
+    auth_cookie = next((c for c in request.cookies.items() if c[0] == 'access_token'), (None, None))
+    
+    try:
+        # Try to extract and decode the JWT if it exists
+        token = None
+        jwt_data = None
+        
+        if auth_cookie[1]:
+            token = auth_cookie[1]
+            try:
+                jwt_data = decode_token(token)
+            except Exception as e:
+                jwt_data = {"error": str(e)}
+        
+        debug_info = {
+            "request_method": request.method,
+            "request_path": request.path,
+            "request_headers": dict(request.headers),
+            "cookies": dict(request.cookies),
+            "auth_cookie_present": auth_cookie[0] is not None,
+            "auth_cookie_value": auth_cookie[1][:10] + "..." if auth_cookie[1] else None,
+            "jwt_data": jwt_data,
+            "cors_config": {
+                "origins": app.config.get('CORS_ORIGINS', '*'),
+                "supports_credentials": app.config.get('CORS_SUPPORTS_CREDENTIALS', False)
+            },
+            "flask_config": {
+                "JWT_TOKEN_LOCATION": app.config.get('JWT_TOKEN_LOCATION'),
+                "JWT_COOKIE_SECURE": app.config.get('JWT_COOKIE_SECURE'),
+                "JWT_COOKIE_CSRF_PROTECT": app.config.get('JWT_COOKIE_CSRF_PROTECT'),
+                "JWT_COOKIE_SAMESITE": app.config.get('JWT_COOKIE_SAMESITE')
+            }
+        }
+        
+        return jsonify(debug_info)
+    except Exception as e:
+        return jsonify({"error": str(e), "traceback": traceback.format_exc()}), 500
+
+def decode_token(token):
+    """Attempt to decode a JWT token"""
+    try:
+        from flask_jwt_extended import decode_token
+        return decode_token(token)
+    except ImportError:
+        import jwt
+        # This is a fallback if flask_jwt_extended can't be used directly
+        # You'll need to adjust this with your actual secret key
+        return jwt.decode(
+            token, 
+            app.config.get('JWT_SECRET_KEY', 'your-secret-key'),
+            algorithms=['HS256']
+        )
 
 # Create a simple HTML template for testing the API
 @app.route('/test', methods=['GET'])
@@ -414,7 +875,6 @@ def test_page():
     </html>
     """
     return html
-
 
 if __name__ == '__main__':
     # Create templates directory if it doesn't exist
